@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { Auth, ThemeSupa } from "@supabase/auth-ui-react";
-import TodoList from "@/components/TodoList";
+import BetList from "@/components/BetList";
 
 export default function Home() {
   const session = useSession();
@@ -15,7 +15,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="w-full h-full bg-gray-200">
+      <div className="w-full bg-gray-200">
         {!session ? (
           <div className="min-w-full min-h-screen flex items-center justify-center">
             <div className="w-full h-full flex justify-center items-center p-4">
@@ -38,7 +38,7 @@ export default function Home() {
             className="w-full h-full flex flex-col justify-center items-center p-4"
             style={{ minWidth: 250, maxWidth: 600, margin: "auto" }}
           >
-            <TodoList session={session} />
+            <BetList session={session} />
             <button
               className="btn-black w-full mt-12"
               onClick={async () => {
