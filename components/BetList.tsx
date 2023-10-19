@@ -180,7 +180,7 @@ export default function TodoList({ session }: { session: Session }) {
 									className='col-span-3'
 									onChange={(e) => {
 										setErrorText('')
-										setNewTeamText(e.target.value)
+										setNewOppsText(e.target.value)
 									}}
 								/>
 							</div>
@@ -197,7 +197,7 @@ export default function TodoList({ session }: { session: Session }) {
 									className='col-span-3'
 									onChange={(e) => {
 										setErrorText('')
-										setNewTeamText(e.target.value)
+										setNewUnitsText(e.target.value)
 									}}
 								/>
 							</div>
@@ -214,7 +214,7 @@ export default function TodoList({ session }: { session: Session }) {
 									className='col-span-3'
 									onChange={(e) => {
 										setErrorText('')
-										setNewTeamText(e.target.value)
+										setNewBet_TypeText(e.target.value)
 									}}
 								/>
 							</div>
@@ -231,7 +231,7 @@ export default function TodoList({ session }: { session: Session }) {
 									className='col-span-3'
 									onChange={(e) => {
 										setErrorText('')
-										setNewTeamText(e.target.value)
+										setNewUser_BetText(e.target.value)
 									}}
 								/>
 							</div>
@@ -248,7 +248,7 @@ export default function TodoList({ session }: { session: Session }) {
 									className='col-span-3'
 									onChange={(e) => {
 										setErrorText('')
-										setNewTeamText(e.target.value)
+										setNewOddsText(e.target.value)
 									}}
 								/>
 							</div>
@@ -265,7 +265,7 @@ export default function TodoList({ session }: { session: Session }) {
 									className='col-span-3'
 									onChange={(e) => {
 										setErrorText('')
-										setNewTeamText(e.target.value)
+										setNewPayoutText(e.target.value)
 									}}
 								/>
 							</div>
@@ -282,7 +282,7 @@ export default function TodoList({ session }: { session: Session }) {
 									className='col-span-3'
 									onChange={(e) => {
 										setErrorText('')
-										setNewTeamText(e.target.value)
+										setNewNotesText(e.target.value)
 									}}
 								/>
 							</div>
