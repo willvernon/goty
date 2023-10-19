@@ -111,15 +111,6 @@ export default function BetCard(props: {
             </Label>
           </div>
         </div>
-        <div className="flex flex-col items-center mx-auto justify-center space-x-2 space-y-2 m-2">
-          <label
-            htmlFor="terms"
-            className="text-sm font-bold leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
-            Winner?
-          </label>
-          <Checkbox id="terms" className=" w-full h-5 rounded-[5px] " />
-        </div>
       </CardContent>
       {/* <CardFooter className='flex justify-between'>
 				
