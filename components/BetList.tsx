@@ -5,6 +5,18 @@ import { useEffect, useState } from 'react'
 import MenubarMain from '@/components/Menubar'
 import BetCard from '@/components/BetCard'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import {
+	Sheet,
+	SheetClose,
+	SheetContent,
+	SheetDescription,
+	SheetFooter,
+	SheetHeader,
+	SheetTitle,
+	SheetTrigger,
+} from '@/components/ui/sheet'
 
 type Todos = Database['public']['Tables']['todos']['Row']
 
@@ -119,95 +131,169 @@ export default function TodoList({ session }: { session: Session }) {
 						newBet_TypeText
 					)
 				}}
-				className='columns-3 gap-2 my-2 justify-center'
+				className=' gap-2 my-2 justify-center'
 			>
-				{/* TODO: add a Bet Card visual for adding a new bet */}
-				<input
-					className='rounded w-full p-2 text-center'
-					type='text'
-					placeholder='Team'
-					value={newTeamText}
-					onChange={(e) => {
-						setErrorText('')
-						setNewTeamText(e.target.value)
-					}}
-				/>
-				<input
-					className='rounded w-full mt-2 p-2 text-center'
-					type='text'
-					placeholder='Opponent'
-					value={newOppsText}
-					onChange={(e) => {
-						setErrorText('')
-						setNewOppsText(e.target.value)
-					}}
-				/>
-				<input
-					className='rounded w-full mt-2 p-2 text-center'
-					type='text'
-					placeholder='Bet Type'
-					value={newBet_TypeText}
-					onChange={(e) => {
-						setErrorText('')
-						setNewBet_TypeText(e.target.value)
-					}}
-				/>
-				<input
-					className='rounded w-full p-2 text-center'
-					type='text'
-					placeholder='Bet'
-					value={newUser_BetText}
-					onChange={(e) => {
-						setErrorText('')
-						setNewUser_BetText(e.target.value)
-					}}
-				/>
-				<input
-					className='rounded w-full mt-2 p-2 text-center'
-					type='text'
-					placeholder='Odds'
-					value={newOddsText}
-					onChange={(e) => {
-						setErrorText('')
-						setNewOddsText(e.target.value)
-					}}
-				/>
-				<input
-					className='rounded w-full mt-2 p-2 text-center'
-					type='text'
-					placeholder='Units'
-					value={newUnitsText}
-					onChange={(e) => {
-						setErrorText('')
-						setNewUnitsText(e.target.value)
-					}}
-				/>
-				<input
-					className='rounded w-full p-2 text-center'
-					type='text'
-					placeholder='Payout'
-					value={newPayoutText}
-					onChange={(e) => {
-						setErrorText('')
-						setNewPayoutText(e.target.value)
-					}}
-				/>
-				<input
-					className='rounded w-full mt-2 p-2 text-center'
-					type='text'
-					placeholder='Notes'
-					value={newNotesText}
-					onChange={(e) => {
-						setErrorText('')
-						setNewNotesText(e.target.value)
-					}}
-				/>
-				<button
-					className='btn-black mt-2 w-full'
-					type='submit'
-				>
-					Add
-				</button>
+				<Sheet>
+					<SheetTrigger asChild>
+						<Button
+							variant='outline'
+							className='w-full rounded '
+						>
+							Add New Bet
+						</Button>
+					</SheetTrigger>
+					<SheetContent>
+						<SheetHeader>
+							<SheetTitle>Edit profile</SheetTitle>
+							<SheetDescription>
+								Make changes to your profile here. Click save when you're done.
+							</SheetDescription>
+						</SheetHeader>
+						<div className='grid gap-4 py-4'>
+							<div className='grid grid-cols-4 items-center gap-4'>
+								<Label
+									htmlFor='name'
+									className='text-right'
+								>
+									Team Name
+								</Label>
+								<Input
+									id='name'
+									value={newTeamText}
+									className='col-span-3'
+									onChange={(e) => {
+										setErrorText('')
+										setNewTeamText(e.target.value)
+									}}
+								/>
+							</div>
+							<div className='grid grid-cols-4 items-center gap-4'>
+								<Label
+									htmlFor='name'
+									className='text-right'
+								>
+									Opponent
+								</Label>
+								<Input
+									id='name'
+									value={newOppsText}
+									className='col-span-3'
+									onChange={(e) => {
+										setErrorText('')
+										setNewTeamText(e.target.value)
+									}}
+								/>
+							</div>
+							<div className='grid grid-cols-4 items-center gap-4'>
+								<Label
+									htmlFor='name'
+									className='text-right'
+								>
+									Units
+								</Label>
+								<Input
+									id='name'
+									value={newUnitsText}
+									className='col-span-3'
+									onChange={(e) => {
+										setErrorText('')
+										setNewTeamText(e.target.value)
+									}}
+								/>
+							</div>
+							<div className='grid grid-cols-4 items-center gap-4'>
+								<Label
+									htmlFor='name'
+									className='text-right'
+								>
+									Bet Type
+								</Label>
+								<Input
+									id='name'
+									value={newBet_TypeText}
+									className='col-span-3'
+									onChange={(e) => {
+										setErrorText('')
+										setNewTeamText(e.target.value)
+									}}
+								/>
+							</div>
+							<div className='grid grid-cols-4 items-center gap-4'>
+								<Label
+									htmlFor='name'
+									className='text-right'
+								>
+									Bet
+								</Label>
+								<Input
+									id='name'
+									value={newUser_BetText}
+									className='col-span-3'
+									onChange={(e) => {
+										setErrorText('')
+										setNewTeamText(e.target.value)
+									}}
+								/>
+							</div>
+							<div className='grid grid-cols-4 items-center gap-4'>
+								<Label
+									htmlFor='name'
+									className='text-right'
+								>
+									Odds
+								</Label>
+								<Input
+									id='name'
+									value={newOddsText}
+									className='col-span-3'
+									onChange={(e) => {
+										setErrorText('')
+										setNewTeamText(e.target.value)
+									}}
+								/>
+							</div>
+							<div className='grid grid-cols-4 items-center gap-4'>
+								<Label
+									htmlFor='name'
+									className='text-right'
+								>
+									Payout
+								</Label>
+								<Input
+									id='name'
+									value={newPayoutText}
+									className='col-span-3'
+									onChange={(e) => {
+										setErrorText('')
+										setNewTeamText(e.target.value)
+									}}
+								/>
+							</div>
+							<div className='grid grid-cols-4 items-center gap-4'>
+								<Label
+									htmlFor='name'
+									className='text-right'
+								>
+									Notes
+								</Label>
+								<Input
+									id='name'
+									value={newNotesText}
+									className='col-span-3'
+									onChange={(e) => {
+										setErrorText('')
+										setNewTeamText(e.target.value)
+									}}
+								/>
+							</div>
+						</div>
+						<SheetFooter>
+							<SheetClose asChild>
+								<Button type='submit'>Save changes</Button>
+							</SheetClose>
+						</SheetFooter>
+					</SheetContent>
+				</Sheet>
 			</form>
 			{!!errorText && <Alert text={errorText} />}
 			<div className='bg-white shadow overflow-hidden rounded-md'>
