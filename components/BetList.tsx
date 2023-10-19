@@ -1,6 +1,6 @@
 import { Database } from '@/lib/schema'
 import { Session, useSupabaseClient } from '@supabase/auth-helpers-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import MenubarMain from '@/components/Menubar'
 import BetCard from '@/components/BetCard'
@@ -17,6 +17,7 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from '@/components/ui/sheet'
+import { Ghost } from 'lucide-react'
 
 type Todos = Database['public']['Tables']['todos']['Row']
 
@@ -111,6 +112,17 @@ export default function TodoList({ session }: { session: Session }) {
 		}
 	}
 
+	const fromRef = useRef(null)
+	const formRef = useRef<HTMLFormElement>(null)
+
+	const handleButtonClick = () => {
+		if (formRef.current) {
+			formRef.current.dispatchEvent(
+				new Event('submit', { cancelable: true, bubbles: true })
+			)
+		}
+	}
+
 	return (
 		<div className='w-full h-full'>
 			<div className='flex items-center justify-between'>
@@ -118,6 +130,8 @@ export default function TodoList({ session }: { session: Session }) {
 				<MenubarMain />
 			</div>
 			<form
+				id='addBetForm'
+				ref={formRef}
 				onSubmit={(e) => {
 					e.preventDefault()
 					addTodo(
@@ -142,144 +156,144 @@ export default function TodoList({ session }: { session: Session }) {
 							Add New Bet
 						</Button>
 					</SheetTrigger>
-					<SheetContent>
+					<SheetContent className='bg-slate-200 rounded-xl'>
 						<SheetHeader>
-							<SheetTitle>Edit profile</SheetTitle>
-							<SheetDescription>
-								Make changes to your profile here. Click save when you're done.
-							</SheetDescription>
+							<SheetTitle className='text-2xl mt-4 '>
+								Add New Bet Card
+							</SheetTitle>
+							<SheetDescription></SheetDescription>
 						</SheetHeader>
-						<div className='grid gap-4 py-4'>
-							<div className='grid grid-cols-4 items-center gap-4'>
+						<div className='grid grid-cols-2 gap-4 py-8 '>
+							<div className='grid grid-cols-3 items-center gap-2'>
 								<Label
 									htmlFor='name'
-									className='text-right'
+									className='col-span-2'
 								>
 									Team Name
 								</Label>
 								<Input
 									id='name'
 									value={newTeamText}
-									className='col-span-3'
+									className='col-span-3 rounded'
 									onChange={(e) => {
 										setErrorText('')
 										setNewTeamText(e.target.value)
 									}}
 								/>
 							</div>
-							<div className='grid grid-cols-4 items-center gap-4'>
+							<div className='grid grid-cols-3 items-center gap-2'>
 								<Label
 									htmlFor='name'
-									className='text-right'
+									className='col-span-2 rounded'
 								>
 									Opponent
 								</Label>
 								<Input
 									id='name'
 									value={newOppsText}
-									className='col-span-3'
+									className='col-span-3 rounded'
 									onChange={(e) => {
 										setErrorText('')
 										setNewOppsText(e.target.value)
 									}}
 								/>
 							</div>
-							<div className='grid grid-cols-4 items-center gap-4'>
+							<div className='grid grid-cols-3 items-center gap-2'>
 								<Label
 									htmlFor='name'
-									className='text-right'
-								>
-									Units
-								</Label>
-								<Input
-									id='name'
-									value={newUnitsText}
-									className='col-span-3'
-									onChange={(e) => {
-										setErrorText('')
-										setNewUnitsText(e.target.value)
-									}}
-								/>
-							</div>
-							<div className='grid grid-cols-4 items-center gap-4'>
-								<Label
-									htmlFor='name'
-									className='text-right'
+									className='col-span-2'
 								>
 									Bet Type
 								</Label>
 								<Input
 									id='name'
 									value={newBet_TypeText}
-									className='col-span-3'
+									className='col-span-3 rounded'
 									onChange={(e) => {
 										setErrorText('')
 										setNewBet_TypeText(e.target.value)
 									}}
 								/>
 							</div>
-							<div className='grid grid-cols-4 items-center gap-4'>
+							<div className='grid grid-cols-3 items-center gap-2'>
 								<Label
 									htmlFor='name'
-									className='text-right'
+									className='col-span-2'
 								>
 									Bet
 								</Label>
 								<Input
 									id='name'
 									value={newUser_BetText}
-									className='col-span-3'
+									className='col-span-3 rounded'
 									onChange={(e) => {
 										setErrorText('')
 										setNewUser_BetText(e.target.value)
 									}}
 								/>
 							</div>
-							<div className='grid grid-cols-4 items-center gap-4'>
+							<div className='grid grid-cols-3 items-center gap-2'>
 								<Label
 									htmlFor='name'
-									className='text-right'
+									className='col-span-2'
 								>
 									Odds
 								</Label>
 								<Input
 									id='name'
 									value={newOddsText}
-									className='col-span-3'
+									className='col-span-3 rounded'
 									onChange={(e) => {
 										setErrorText('')
 										setNewOddsText(e.target.value)
 									}}
 								/>
 							</div>
-							<div className='grid grid-cols-4 items-center gap-4'>
+							<div className='grid grid-cols-3 items-center gap-2'>
 								<Label
 									htmlFor='name'
-									className='text-right'
+									className='col-span-2'
+								>
+									Units
+								</Label>
+								<Input
+									id='name'
+									value={newUnitsText}
+									className='col-span-3 rounded'
+									onChange={(e) => {
+										setErrorText('')
+										setNewUnitsText(e.target.value)
+									}}
+								/>
+							</div>
+							<div className='grid grid-cols-3 items-center gap-2'>
+								<Label
+									htmlFor='name'
+									className='col-span-2'
 								>
 									Payout
 								</Label>
 								<Input
 									id='name'
 									value={newPayoutText}
-									className='col-span-3'
+									className='col-span-3 rounded'
 									onChange={(e) => {
 										setErrorText('')
 										setNewPayoutText(e.target.value)
 									}}
 								/>
 							</div>
-							<div className='grid grid-cols-4 items-center gap-4'>
+							<div className='grid grid-cols-3 items-center gap-2'>
 								<Label
 									htmlFor='name'
-									className='text-right'
+									className='col-span-2'
 								>
 									Notes
 								</Label>
 								<Input
 									id='name'
 									value={newNotesText}
-									className='col-span-3'
+									className='col-span-3 rounded'
 									onChange={(e) => {
 										setErrorText('')
 										setNewNotesText(e.target.value)
@@ -289,7 +303,13 @@ export default function TodoList({ session }: { session: Session }) {
 						</div>
 						<SheetFooter>
 							<SheetClose asChild>
-								<Button type='submit'>Save changes</Button>
+								<Button
+									type='submit'
+									onClick={handleButtonClick}
+									className='bg-black rounded text-white'
+								>
+									Save changes
+								</Button>
 							</SheetClose>
 						</SheetFooter>
 					</SheetContent>
