@@ -44,7 +44,7 @@ export default function BetCard(props: {
   const { created_at } = props;
 
   return (
-    <Card className="w-[300px] mx-auto bg-slate-300 rounded-xl">
+    <Card className="w-[300px] shadow-xl shadow-gray-900 mx-auto bg-slate-300 rounded-xl">
       <CardHeader>
         <CardTitle>{teamName}</CardTitle>
         <CardDescription>Desc</CardDescription>

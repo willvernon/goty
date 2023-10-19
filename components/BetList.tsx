@@ -126,7 +126,7 @@ export default function TodoList({ session }: { session: Session }) {
 	return (
 		<div className='w-full h-full'>
 			<div className='flex items-center justify-between'>
-				<h1 className='mb-12'>GOTY.</h1>
+				<h1 className='mb-12 text-white tracking-wide'>GOTY.</h1>
 				<MenubarMain />
 			</div>
 			<form
@@ -149,12 +149,19 @@ export default function TodoList({ session }: { session: Session }) {
 			>
 				<Sheet>
 					<SheetTrigger asChild>
-						<Button
-							variant='outline'
-							className='w-full rounded '
-						>
-							Add New Bet
-						</Button>
+						<div className='flex mx-20 justify-between'>
+							<div className='w-1/2 text-white'>
+								<h3 className='text-xl font-bold text-white tracking-wide '>
+									Your Sheet
+								</h3>
+							</div>
+							<Button
+								variant='outline'
+								className=' rounded text-white'
+							>
+								Add New Bet
+							</Button>
+						</div>
 					</SheetTrigger>
 					<SheetContent className='bg-slate-200 rounded-xl'>
 						<SheetHeader>
@@ -316,16 +323,14 @@ export default function TodoList({ session }: { session: Session }) {
 				</Sheet>
 			</form>
 			{!!errorText && <Alert text={errorText} />}
-			<div className='bg-white shadow overflow-hidden rounded-md'>
-				<ul>
-					{todos.map((todo) => (
-						<Todo
-							key={todo.id}
-							todo={todo}
-							onDelete={() => deleteTodo(todo.id)}
-						/>
-					))}
-				</ul>
+			<div className='grid grid-cols-2 gap-4 overflow-hidden rounded-md'>
+				{todos.map((todo) => (
+					<Todo
+						key={todo.id}
+						todo={todo}
+						onDelete={() => deleteTodo(todo.id)}
+					/>
+				))}
 			</div>
 		</div>
 	)
@@ -352,14 +357,7 @@ const Todo = ({ todo, onDelete }: { todo: Todos; onDelete: () => void }) => {
 	}
 
 	return (
-		<div className='mt-5'>
-			<li className='w-full block cursor-pointer hover:bg-gray-200 focus:outline-none focus:bg-gray-200 transition duration-150 ease-in-out'>
-				<div className='flex items-center px-4 py-4 sm:px-6'>
-					<div className='min-w-0 flex-1 flex items-center'>
-						<div className='flex flex-col'></div>
-					</div>
-				</div>
-			</li>
+		<div className='mb-10'>
 			<div className='w-full justify-items-center'>
 				<BetCard
 					teamName={todo.team}
@@ -378,14 +376,14 @@ const Todo = ({ todo, onDelete }: { todo: Todos; onDelete: () => void }) => {
 					<div className='flex flex-col items-center mx-auto justify-center space-x-2 space-y-2 m-2'>
 						<label
 							htmlFor='terms'
-							className='text-sm font-bold leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+							className='text-sm font-bold text-white tracking-wide'
 						>
 							Winner?
 						</label>
 						<div className='flex w-full items-center mx-auto'>
 							<input
 								id='terms'
-								className='flex-1 h-6 rounded-[5px] mx-auto'
+								className='flex-1 h-6 w-full rounded[5px] mx-auto'
 								onChange={(e) => toggle()}
 								type='checkbox'
 								checked={isWinner ? true : false}
